@@ -19,8 +19,7 @@ selector('.busca').addEventListener('submit', async (event) => {
     let response = await fetch(url)
 
     let resultado = await response.json()
-    console.log(resultado)
-
+    
     if (resultado.cod === 200) {
 
       showInfo(
@@ -74,7 +73,8 @@ const showInfo = (resultado) => {
   selector('.titulo').innerHTML = `${resultado.cidade} / ${resultado.pais}`
 
   //temp e cores
-  selector('.tempInfo').innerHTML = `${resultado.temperatura.toFixed(0)}<sup>ºC</sup>`
+  let temperaturaExata = Math.floor(resultado.temperatura)
+  selector('.tempInfo').innerHTML = `${temperaturaExata}<sup>ºC</sup>`
 
   let temperatura = `${resultado.temperatura}`
 
